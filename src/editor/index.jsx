@@ -74,7 +74,7 @@ class Editor extends React.Component {
 	}
 
   render() {
-    console.log(this.props);
+    // console.log(this.props);
     const width = this.props.dimensions.width;
     const height = this.props.dimensions.height;
     if (isNaN(width) || isNaN(height)) {

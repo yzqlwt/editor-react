@@ -1,8 +1,9 @@
 import ReactDOM from 'react-dom';
 import React, { FC } from 'react';
 import { ReflexContainer, ReflexSplitter, ReflexElement } from 'react-reflex';
+import { HandlerProps } from 'react-reflex';
 import './index.global.css';
-import Editor from './editor/index';
+import Editor from './containers/editor/index';
 interface ReflexStorageDemoProps {}
 
 interface LayoutContainer {
@@ -17,7 +18,6 @@ class ReflexStorageDemo extends React.Component {
 
   constructor(props: FC<ReflexStorageDemoProps>) {
     super(props);
-    this.onResizePane = this.onResizePane.bind(this);
     this.layoutState = this.getLayoutState();
   }
 
@@ -35,14 +35,16 @@ class ReflexStorageDemo extends React.Component {
     };
   }
 
-  onResizePane(event) {
-    const { name, flex } = event.component.props;
-    this.layoutState[name].flex = flex;
+  onResizePane = (event: HandlerProps) => {
+    const { name, flex }: { name: keyof LayoutContainer; flex: number } = event
+      .component.props as any;
+    this.layoutState[name] = flex;
+    console.log(this.layoutState)
     window.localStorage.setItem(
       'layout-flex',
       JSON.stringify(this.layoutState)
     );
-  }
+  };
 
   render() {
     return (
@@ -52,15 +54,13 @@ class ReflexStorageDemo extends React.Component {
             <ReflexElement
               flex={this.layoutState.HierarchyContainer}
               onResize={this.onResizePane}
-              name="hierarchy"
+              name="HierarchyContainer"
             >
               <div className="pane-content">
                 <label>层级管理器</label>
               </div>
             </ReflexElement>
-
             <ReflexSplitter id="gray" />
-
             <ReflexElement className="bottom-pane">
               <div className="pane-content">
                 <label>资源管理器</label>
@@ -69,12 +69,12 @@ class ReflexStorageDemo extends React.Component {
           </ReflexContainer>
         </ReflexElement>
         <ReflexSplitter id="gray" />
-        <ReflexElement flex={this.layoutState.CenterContainer}>
+        <ReflexElement flex={this.layoutState.CenterContainer} name="CenterContainer">
           <ReflexContainer orientation="horizontal">
             <ReflexElement
               flex={this.layoutState.EditorContainer}
               onResize={this.onResizePane}
-              name="editor"
+              name="EditorContainer"
               propagateDimensionsRate={200}
               propagateDimensions={true}
             >
@@ -93,7 +93,7 @@ class ReflexStorageDemo extends React.Component {
           flex={this.layoutState.RightContainer}
           onResize={this.onResizePane}
           className="right-pane"
-          name="inspector"
+          name="RightContainer"
         >
           <div className="pane-content">
             <label>属性面板</label>

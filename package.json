@@ -257,7 +257,12 @@
     "react-reflex": "^4.0.1",
     "react-router-dom": "^5.2.0",
     "regenerator-runtime": "^0.13.5",
-    "source-map-support": "^0.5.19"
+    "source-map-support": "^0.5.19",
+    "@ant-design/icons": "^4.3.0",
+    "antd": "^4.10.3",
+    "react-hot-keys": "^2.6.2",
+    "react-contextmenu": "^2.14.0",
+    "react-custom-scrollbars": "^4.2.1"
   },
   "devEngines": {
     "node": ">=10.x",

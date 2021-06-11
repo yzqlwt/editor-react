@@ -36,6 +36,11 @@ export default {
   resolve: {
     extensions: ['.js', '.jsx', '.json', '.ts', '.tsx'],
     modules: [path.join(__dirname, '../../src'), 'node_modules'],
+    alias: {
+      '@common': path.join(__dirname, '../../src/common'),
+      '@container': path.join(__dirname, '../../src/container'),
+      '@editor': path.join(__dirname, '../../src/container/editor'),
+    },
   },
 
   plugins: [

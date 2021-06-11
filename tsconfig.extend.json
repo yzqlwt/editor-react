@@ -1,0 +1,10 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@common/*": ["src/common/*"],
+      "@container/*": ["src/container/*"],
+      "@editor/*": ["src/container/editor/*"]
+    }
+  }
+}

@@ -85,7 +85,7 @@ class Ruler extends React.Component {
   }
 
   render() {
-    console.log(this.props);
+    // console.log(this.props);
     const width = this.props.width;
     const height = this.props.height;
     return (
