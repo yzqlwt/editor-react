@@ -4,19 +4,9 @@ import { ReflexContainer, ReflexSplitter, ReflexElement } from 'react-reflex';
 import { HandlerProps } from 'react-reflex';
 import './index.global.css';
 import Editor from './containers/editor/index';
-interface ReflexStorageDemoProps {}
 
-interface LayoutContainer {
-  LeftContainer: number;
-  CenterContainer: number;
-  RightContainer: number;
-  HierarchyContainer: number;
-  EditorContainer: number;
-}
 class ReflexStorageDemo extends React.Component {
-  layoutState: LayoutContainer;
-
-  constructor(props: FC<ReflexStorageDemoProps>) {
+  constructor(props) {
     super(props);
     this.layoutState = this.getLayoutState();
   }
@@ -35,11 +25,9 @@ class ReflexStorageDemo extends React.Component {
     };
   }
 
-  onResizePane = (event: HandlerProps) => {
-    const { name, flex }: { name: keyof LayoutContainer; flex: number } = event
-      .component.props as any;
+  onResizePane = (event) => {
+    const { name, flex } = event.component.props;
     this.layoutState[name] = flex;
-    console.log(this.layoutState)
     window.localStorage.setItem(
       'layout-flex',
       JSON.stringify(this.layoutState)
@@ -69,7 +57,10 @@ class ReflexStorageDemo extends React.Component {
           </ReflexContainer>
         </ReflexElement>
         <ReflexSplitter id="gray" />
-        <ReflexElement flex={this.layoutState.CenterContainer} name="CenterContainer">
+        <ReflexElement
+          flex={this.layoutState.CenterContainer}
+          name="CenterContainer"
+        >
           <ReflexContainer orientation="horizontal">
             <ReflexElement
               flex={this.layoutState.EditorContainer}

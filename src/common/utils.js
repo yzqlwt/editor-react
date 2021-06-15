@@ -1,4 +1,4 @@
-export function validNumber(value: any, defaultValue: number): number {
+export function validNumber(value, defaultValue) {
   if (typeof value === 'undefined') {
     return defaultValue;
   }
@@ -18,17 +18,19 @@ export function validNumber(value: any, defaultValue: number): number {
  * @param {number} scale
  * @return {*}  {number}
  */
-export function calcMinMark(scale: number): number {
-  const range = [1, 2, 5]
+export function calcMinMark(scale) {
+  const range = [1, 2, 5];
   let rise = 1;
   let [num, index] = [0, 0];
+  // eslint-disable-next-line
   b: while (true) {
     index = 0;
     while (index < range.length) {
       num = validNumber(range[index] * rise, rise);
       const length = validNumber(num * scale, num);
+      // eslint-disable-next-line
       if (length >= 50) break b;
-      index++;
+      index += 1;
     }
     rise *= 10;
     if (rise > 1000) {

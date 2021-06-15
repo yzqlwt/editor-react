@@ -1,6 +1,6 @@
 import React from "react";
-import Grid from "./grid";
-import Ruler from "./ruler";
+import Grid from "../containers/editor/grid";
+import Ruler from "../containers/editor/ruler";
 
 const style = {
   display: "flex",
