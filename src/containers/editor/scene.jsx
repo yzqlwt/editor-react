@@ -20,10 +20,10 @@ class Scene extends React.Component {
     const canvas = this.canvas.current;
     const context = canvas.getContext('2d');
     context.clearRect(0, 0, width, height);
-    // context.scale(scale, -1 * scale);
-    context.scale(1, -1);
-    context.translate(EditorMargin, -height + EditorMargin);
-    console.log('componentDidUpdate', scale);
+    // // context.scale(scale, -1 * scale);
+    // context.scale(scale, -1);
+    // context.translate(EditorMargin, -height + EditorMargin);
+    // console.log('componentDidUpdate', scale);
 
     // context.translate(EditorMargin, -height + EditorMargin);
     context.beginPath();
@@ -58,9 +58,14 @@ class Scene extends React.Component {
 
   render() {
     const { width, height } = this.props;
+    const styles = {
+      height: 0,
+      width: 0,
+      transform: `translate(${EditorMargin}px, ${0}px)`
+    };
     return (
-      <div id="Scene" style={{ height: 0, width: 0 }}>
-        <canvas ref={this.canvas} height={height} width={width} />
+      <div id="Scene" style={styles}>
+        <canvas ref={this.canvas} height={height} width={width}/>
       </div>
     );
   }

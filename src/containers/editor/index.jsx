@@ -39,7 +39,7 @@ class Editor extends React.Component {
   render() {
     const { dimensions } = this.props;
     const { width, height } = dimensions;
-    if (Number.isNaN(width) || Number.isNaN(height)) {
+    if (typeof(width)=="string" || typeof(height)=="string") {
       return null;
     }
     const { scale } = this.state;
@@ -62,7 +62,7 @@ class Editor extends React.Component {
 }
 
 Editor.propTypes = {
-  dimensions: PropTypes.objectOf(PropTypes.any).isRequired,
+  dimensions: PropTypes.objectOf(PropTypes.any),
 };
 
 export default Editor;
