@@ -1,9 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { calcMinMark } from '@common/utils';
+import { EditorMargin } from '@common/config';
 import Scene from './scene';
-import Ruler from './ruler';
+import Ruler from './ruler3';
 import Grid from './grid';
+import MouseTag from './mouseTag';
 
 class Editor extends React.Component {
   constructor(props) {
@@ -34,12 +36,16 @@ class Editor extends React.Component {
 
   handleMouseEvent = (event) => {
     const { buttons } = event;
+    if (buttons === 0){
+
+    }
   };
+
 
   render() {
     const { dimensions } = this.props;
     const { width, height } = dimensions;
-    if (typeof(width)=="string" || typeof(height)=="string") {
+    if (typeof width === 'string' || typeof height === 'string') {
       return null;
     }
     const { scale } = this.state;
@@ -53,9 +59,15 @@ class Editor extends React.Component {
         onWheel={this.handleScroll}
         onMouseMove={this.handleMouseEvent}
       >
-        <Scene scale={scale} width={width} height={height} />
+        <Scene
+          scale={scale}
+          width={width - EditorMargin}
+          height={height - EditorMargin}
+        />
         <Ruler scale={scale} gap={gap} width={width} height={height} />
         <Grid scale={scale} gap={gap} width={width} height={height} />
+        <MouseTag scale={scale} gap={gap} width={width} height={height} />
+
       </div>
     );
   }

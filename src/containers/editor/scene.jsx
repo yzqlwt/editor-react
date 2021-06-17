@@ -20,18 +20,7 @@ class Scene extends React.Component {
     const canvas = this.canvas.current;
     const context = canvas.getContext('2d');
     context.clearRect(0, 0, width, height);
-    // // context.scale(scale, -1 * scale);
-    // context.scale(scale, -1);
-    // context.translate(EditorMargin, -height + EditorMargin);
-    // console.log('componentDidUpdate', scale);
-
-    // context.translate(EditorMargin, -height + EditorMargin);
-    context.beginPath();
-    context.fillStyle = '#232323';
-    context.fillRect(100, 100, 100, 50);
-    context.restore();
-    context.save();
-    // this.drawImages();
+    this.drawImages();
   }
 
   convertX = (x) => {
@@ -45,14 +34,13 @@ class Scene extends React.Component {
   drawImages() {
     const canvas = this.canvas.current;
     const context = canvas.getContext('2d');
+    const { scale } = this.props;
     const img = new Image();
     img.src = '../.erb/img/webpack.png';
     // 当图片准备以后再绘制
     img.onload = () => {
       // 绘制图片,按照图片本身的大小进行加载
-      context.drawImage(img, 0, 0);
-      context.restore();
-      context.save();
+      context.drawImage(img, 0, 0, img.width * scale, img.height * scale);
     };
   }
 
@@ -61,11 +49,11 @@ class Scene extends React.Component {
     const styles = {
       height: 0,
       width: 0,
-      transform: `translate(${EditorMargin}px, ${0}px)`
+      transform: `translate(${EditorMargin}px, ${EditorMargin}px)`,
     };
     return (
       <div id="Scene" style={styles}>
-        <canvas ref={this.canvas} height={height} width={width}/>
+        <canvas ref={this.canvas} height={height} width={width} />
       </div>
     );
   }

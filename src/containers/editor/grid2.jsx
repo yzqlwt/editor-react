@@ -27,18 +27,18 @@ class Grid extends React.Component {
     let finalX = Math.round(raseX) + 0.5;
     context.moveTo(raseX, height - EditorMargin);
     context.strokeStyle = colorStyle;
-    while (raseX <= width) {
-      context.moveTo(finalX, height);
+    while (raseX < width) {
+      context.moveTo(finalX, height - EditorMargin);
       context.lineTo(finalX, 0);
       raseX += gap;
       finalX = Math.round(raseX) + 0.5;
     }
-    let raseY = EditorMargin;
+    let raseY = height - EditorMargin;
     let finalY = Math.round(raseY) + 0.5;
-    while (raseY <= height) {
+    while (raseY > 0) {
       context.moveTo(width, finalY);
       context.lineTo(EditorMargin, finalY);
-      raseY += gap;
+      raseY -= gap;
       finalY = Math.round(raseY) + 0.5;
     }
     context.stroke();
