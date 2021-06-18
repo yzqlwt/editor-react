@@ -1,9 +1,9 @@
 import ReactDOM from 'react-dom';
 import React, { FC } from 'react';
 import { ReflexContainer, ReflexSplitter, ReflexElement } from 'react-reflex';
-import { HandlerProps } from 'react-reflex';
 import './index.global.css';
 import Editor from './containers/editor/index';
+import Hierarchy from './containers/hierarchy/index';
 
 class ReflexStorageDemo extends React.Component {
   constructor(props) {
@@ -11,7 +11,7 @@ class ReflexStorageDemo extends React.Component {
     this.layoutState = this.getLayoutState();
   }
 
-  getLayoutState() {
+  getLayoutState = () => {
     const item = window.localStorage.getItem('layout-flex');
     if (item) {
       return JSON.parse(item);
@@ -23,7 +23,7 @@ class ReflexStorageDemo extends React.Component {
       HierarchyContainer: 0.5,
       EditorContainer: 0.7,
     };
-  }
+  };
 
   onResizePane = (event) => {
     const { name, flex } = event.component.props;
@@ -44,9 +44,7 @@ class ReflexStorageDemo extends React.Component {
               onResize={this.onResizePane}
               name="HierarchyContainer"
             >
-              <div className="pane-content">
-                <label>层级管理器</label>
-              </div>
+              <Hierarchy></Hierarchy>
             </ReflexElement>
             <ReflexSplitter id="gray" />
             <ReflexElement className="bottom-pane">

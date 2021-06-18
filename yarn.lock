@@ -19,7 +19,7 @@
   resolved "https://registry.npm.taobao.org/@ant-design/icons-svg/download/@ant-design/icons-svg-4.1.0.tgz#480b025f4b20ef7fe8f47d4a4846e4fee84ea06c"
   integrity sha1-SAsCX0sg73/o9H1KSEbk/uhOoGw=
 
-"@ant-design/icons@^4.3.0", "@ant-design/icons@^4.6.2":
+"@ant-design/icons@^4.6.2":
   version "4.6.2"
   resolved "https://registry.npm.taobao.org/@ant-design/icons/download/@ant-design/icons-4.6.2.tgz#290f2e8cde505ab081fda63e511e82d3c48be982"
   integrity sha1-KQ8ujN5QWrCB/aY+UR6C08SL6YI=
@@ -2304,10 +2304,10 @@ ansi-styles@^4.0.0, ansi-styles@^4.1.0:
   dependencies:
     color-convert "^2.0.1"
 
-antd@^4.10.3:
-  version "4.16.1"
-  resolved "https://registry.nlark.com/antd/download/antd-4.16.1.tgz#7e6bcd24a8b7afb0e0c96239bc3a986ef3958167"
-  integrity sha1-fmvNJKi3r7DgyWI5vDqYbvOVgWc=
+antd@^4.16.3:
+  version "4.16.3"
+  resolved "https://registry.nlark.com/antd/download/antd-4.16.3.tgz#9836613eaeabb55a0bcd4423551df699d65f67a8"
+  integrity sha1-mDZhPq6rtVoLzUQjVR32mdZfZ6g=
   dependencies:
     "@ant-design/colors" "^6.0.0"
     "@ant-design/icons" "^4.6.2"

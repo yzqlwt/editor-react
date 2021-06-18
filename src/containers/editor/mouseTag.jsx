@@ -8,19 +8,21 @@ class MouseTag extends React.Component {
     this.canvas = React.createRef();
   }
 
-  componentDidUpdate() {
+  handleMouseEvent = (event) => {
     const { width, height, scale } = this.props;
     const canvas = this.canvas.current;
     const context = canvas.getContext('2d');
     context.clearRect(0, 0, width, height);
-  }
-
-  handleMouseEvent = (event) => {
-    const { buttons } = event;
-    console.log("butons")
-
-    // if (buttons === 0) {
-    // }
+    const rect = canvas.getBoundingClientRect();
+    const x = event.pageX - rect.left;
+    const y = event.pageY - rect.top;
+    context.beginPath();
+    context.strokeStyle = '#ff0000';
+    context.moveTo(0, y);
+    context.lineTo(EditorMargin, y);
+    context.moveTo(x, 0);
+    context.lineTo(x, EditorMargin);
+    context.stroke();
   };
 
   render() {

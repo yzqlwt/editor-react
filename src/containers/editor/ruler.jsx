@@ -15,19 +15,16 @@ class Ruler extends React.Component {
   }
 
   drawVerticalRuler(context) {
-    const { gap } = this.props;
-    let { width, height } = this.props;
+    const { gap, height } = this.props;
+    let { width } = this.props;
     width = EditorMargin;
-    height -= EditorMargin;
     context.beginPath();
     context.moveTo(EditorMargin, 0);
     context.lineTo(EditorMargin, height);
-    context.moveTo(0, height);
-    context.lineTo(EditorMargin, height);
-    let raseY = height;
+    let raseY = EditorMargin;
     let finalY = Math.round(raseY) + 0.5;
     let lineCount = 0;
-    while (raseY > 0) {
+    while (raseY <= height) {
       if (lineCount % 10 === 0) {
         context.moveTo(width - 1, finalY);
         context.lineTo(3, finalY);
@@ -42,7 +39,7 @@ class Ruler extends React.Component {
         context.moveTo(width - 1, finalY);
         context.lineTo(width - 4, finalY);
       }
-      raseY -= this.minSpacing;
+      raseY += this.minSpacing;
       finalY = Math.round(raseY) + 0.5;
       lineCount += 1;
     }
@@ -50,31 +47,25 @@ class Ruler extends React.Component {
   }
 
   drawHorizontalRuler(context) {
-    const { gap, width } = this.props;
-    let { height } = this.props;
-    height -= EditorMargin;
+    const { gap, width, height } = this.props;
     context.beginPath();
-    context.moveTo(EditorMargin, height);
-    context.lineTo(width, height);
+    context.moveTo(0, EditorMargin);
+    context.lineTo(width, EditorMargin);
     let raseX = EditorMargin;
     let finalX = Math.round(raseX) + 0.5;
     context.moveTo(raseX, height);
     let lineCount = 0;
     while (raseX < width) {
       if (lineCount % 10 === 0) {
-        context.moveTo(finalX, height + 1);
-        context.lineTo(finalX, height + EditorMargin);
-        context.fillText(
-          ((lineCount / 10) * gap).toString(),
-          raseX + 2,
-          height + EditorMargin - 3
-        );
+        context.moveTo(finalX, 0);
+        context.lineTo(finalX, EditorMargin);
+        context.fillText(((lineCount / 10) * gap).toString(), raseX + 2, 12);
       } else if (lineCount % 2 === 0) {
-        context.moveTo(finalX, height + 1);
-        context.lineTo(finalX, height + 6);
+        context.moveTo(finalX, EditorMargin - 1);
+        context.lineTo(finalX, EditorMargin - 6);
       } else {
-        context.moveTo(finalX, height + 1);
-        context.lineTo(finalX, this.canvas.height + 4);
+        context.moveTo(finalX, EditorMargin - 1);
+        context.lineTo(finalX, EditorMargin - 4);
       }
       raseX += this.minSpacing;
       finalX = Math.round(raseX) + 0.5;
@@ -90,7 +81,8 @@ class Ruler extends React.Component {
     const canvas = this.canvas.current;
     const context = canvas.getContext('2d');
     context.beginPath();
-    context.strokeStyle = '#888888';
+    context.strokeStyle = '#c3c3c3';
+    context.fillStyle = '#c3c3c3';
     context.font = "11px 'Helvetica'";
     context.clearRect(0, 0, width, height);
     this.drawHorizontalRuler(context);

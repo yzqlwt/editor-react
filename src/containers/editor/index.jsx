@@ -2,8 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { calcMinMark } from '@common/utils';
 import { EditorMargin } from '@common/config';
+// import Scene from './scene';
 import Scene from './scene';
-import Ruler from './ruler3';
+import Ruler from './ruler';
 import Grid from './grid';
 import MouseTag from './mouseTag';
 
@@ -72,6 +73,9 @@ class Editor extends React.Component {
     );
   }
 }
+Editor.defaultProps = {
+  dimensions: {},
+};
 
 Editor.propTypes = {
   dimensions: PropTypes.objectOf(PropTypes.any),

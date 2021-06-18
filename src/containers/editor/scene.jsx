@@ -8,20 +8,20 @@ class Scene extends React.Component {
     this.canvas = React.createRef();
   }
 
-  componentDidMount() {
-    console.log('componentDidMount');
-    const canvas = this.canvas.current;
-    const context = canvas.getContext('2d');
-    context.save();
-  }
+  // componentDidMount() {
+  //   console.log('componentDidMount');
+  //   const canvas = this.canvas.current;
+  //   const context = canvas.getContext('2d');
+  //   context.save();
+  // }
 
-  componentDidUpdate() {
-    const { width, height, scale } = this.props;
-    const canvas = this.canvas.current;
-    const context = canvas.getContext('2d');
-    context.clearRect(0, 0, width, height);
-    this.drawImages();
-  }
+  // componentDidUpdate() {
+  //   const { width, height, scale } = this.props;
+  //   const canvas = this.canvas.current;
+  //   const context = canvas.getContext('2d');
+  //   context.clearRect(0, 0, width, height);
+  //   this.drawImages();
+  // }
 
   convertX = (x) => {
     return x + EditorMargin;
@@ -49,6 +49,7 @@ class Scene extends React.Component {
     const styles = {
       height: 0,
       width: 0,
+      pointerEvents: 'none',
       transform: `translate(${EditorMargin}px, ${EditorMargin}px)`,
     };
     return (
