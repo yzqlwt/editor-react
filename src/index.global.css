@@ -3,7 +3,7 @@
 
 body {
   margin: 0px;
-  background: #474747;
+  background: #333333;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
@@ -32,15 +32,17 @@ code {
   -webkit-box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.2);
 }
 
+
 #gray {
-  background: rgba(11, 11, 11, 0.6);
+  background: #333333;
 }
+
 #gray:active {
   background: orange;
 }
 
 .ant-tree-list{
-  background: #474747
+  background: #454545
 }
 
 .ant-tree-switcher{
@@ -59,4 +61,50 @@ code {
 }
 .ant-tree .ant-tree-node-content-wrapper:hover{
   background: #a6a6a6
+}
+
+.ant-tabs-nav::before{
+  display: none;
+}
+
+
+.inner {
+  display: inline-block;
+  box-sizing: border-box;
+  height: 22px;
+  background-color: #454545;
+  border-top: 1px solid #606060;
+  border-left: 1px solid #606060;
+  border-right: 1px solid #606060;
+  border-top-right-radius: 3px;
+}
+
+.title {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: flex-start;
+  min-width: 76px;
+  height: 21px;
+  margin: 0 13px 0 7px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+#icon {
+  display: inline;
+  margin-right: 3px;
+}
+#name {
+  height: 21px;
+  font-size: 12px;
+  color: #aaa;
+}
+
+.content {
+  height: calc(100% - 25px);
+  background-color: #454545;
+  border: 1px solid #606060;
 }

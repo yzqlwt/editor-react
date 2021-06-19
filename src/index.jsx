@@ -4,6 +4,7 @@ import { ReflexContainer, ReflexSplitter, ReflexElement } from 'react-reflex';
 import './index.global.css';
 import Editor from './containers/editor/index';
 import Hierarchy from './containers/hierarchy/index';
+import Assets from './containers/assets/index';
 
 class ReflexStorageDemo extends React.Component {
   constructor(props) {
@@ -48,9 +49,7 @@ class ReflexStorageDemo extends React.Component {
             </ReflexElement>
             <ReflexSplitter id="gray" />
             <ReflexElement className="bottom-pane">
-              <div className="pane-content">
-                <label>资源管理器</label>
-              </div>
+              <Assets></Assets>
             </ReflexElement>
           </ReflexContainer>
         </ReflexElement>
