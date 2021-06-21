@@ -7,6 +7,8 @@ import Scene from './scene';
 import Ruler from './ruler';
 import Grid from './grid';
 import MouseTag from './mouseTag';
+import Tab from '../common/tab';
+import Icons from '@common/icons';
 
 class Editor extends React.Component {
   constructor(props) {
@@ -37,11 +39,9 @@ class Editor extends React.Component {
 
   handleMouseEvent = (event) => {
     const { buttons } = event;
-    if (buttons === 0){
-
+    if (buttons === 0) {
     }
   };
-
 
   render() {
     const { dimensions } = this.props;
@@ -52,24 +52,33 @@ class Editor extends React.Component {
     const { scale } = this.state;
     const gap = calcMinMark(scale);
     return (
-      <div
-        id="editor"
-        style={{
-          height: '100%',
-        }}
-        onWheel={this.handleScroll}
-        onMouseMove={this.handleMouseEvent}
-      >
-        <Scene
-          scale={scale}
-          width={width - EditorMargin}
-          height={height - EditorMargin}
-        />
-        <Ruler scale={scale} gap={gap} width={width} height={height} />
-        <Grid scale={scale} gap={gap} width={width} height={height} />
-        <MouseTag scale={scale} gap={gap} width={width} height={height} />
-
-      </div>
+      <React.Fragment>
+        <Tab name="场景编辑器" icon={Icons.scene} />
+        <div className="content">
+          <div
+            id="editor"
+            style={{
+              height: '100%',
+            }}
+            onWheel={this.handleScroll}
+            onMouseMove={this.handleMouseEvent}
+          >
+            <Scene
+              scale={scale}
+              width={width - EditorMargin}
+              height={height - EditorMargin - 25}
+            />
+            <Ruler scale={scale} gap={gap} width={width} height={height - 25} />
+            <Grid scale={scale} gap={gap} width={width} height={height - 25} />
+            <MouseTag
+              scale={scale}
+              gap={gap}
+              width={width}
+              height={height - 25}
+            />
+          </div>
+        </div>
+      </React.Fragment>
     );
   }
 }

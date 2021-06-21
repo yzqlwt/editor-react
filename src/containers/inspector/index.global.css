@@ -1,0 +1,38 @@
+:host {
+  --prop-name-width: 85.8px;
+  --color-normal-fill-emphasis: #2f2f2f;
+  --color-normal-contrast: #c3c3c3;
+  --size-normal-border: 1;
+  --color-normal-border: #565656;
+}
+
+.header{
+  display: block;
+}
+.ins-prop{
+  margin: 4px 0;
+  display: flex;
+  flex-flow: wrap;
+}
+
+.label {
+  padding: 0 5px;
+  font-family: var(--font-editor);
+  cursor: ew-resize;
+  color: #c3c3c3;
+  user-select: none;
+}
+
+.prop-name {
+  display: inline-flex;
+  width: var(--prop-name-width);
+  overflow: hidden;
+  padding-right: 4px;
+  box-sizing: border-box;
+  text-overflow: ellipsis;
+}
+
+.prop-content {
+  flex: 1;
+  display: flex;
+}

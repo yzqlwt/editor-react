@@ -35,7 +35,7 @@ class Grid extends React.Component {
     }
     let raseY = EditorMargin;
     let finalY = Math.round(raseY) + 0.5;
-    while (raseY <= height) {
+    while (raseY <= height + 100) {
       context.moveTo(width, finalY);
       context.lineTo(EditorMargin, finalY);
       raseY += gap;

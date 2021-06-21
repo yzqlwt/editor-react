@@ -5,6 +5,8 @@ import './index.global.css';
 import Editor from './containers/editor/index';
 import Hierarchy from './containers/hierarchy/index';
 import Assets from './containers/assets/index';
+import Inspector from './containers/inspector/index';
+import NodeLibrary from './containers/library/index';
 
 class ReflexStorageDemo extends React.Component {
   constructor(props) {
@@ -44,11 +46,12 @@ class ReflexStorageDemo extends React.Component {
               flex={this.layoutState.HierarchyContainer}
               onResize={this.onResizePane}
               name="HierarchyContainer"
+              className="pane"
             >
               <Hierarchy></Hierarchy>
             </ReflexElement>
             <ReflexSplitter id="gray" />
-            <ReflexElement className="bottom-pane">
+            <ReflexElement className="pane">
               <Assets></Assets>
             </ReflexElement>
           </ReflexContainer>
@@ -63,16 +66,15 @@ class ReflexStorageDemo extends React.Component {
               flex={this.layoutState.EditorContainer}
               onResize={this.onResizePane}
               name="EditorContainer"
+              className="pane"
               propagateDimensionsRate={200}
               propagateDimensions={true}
             >
               <Editor></Editor>
             </ReflexElement>
             <ReflexSplitter id="gray" />
-            <ReflexElement className="bottom-pane">
-              <div className="pane-content">
-                <label>组件库</label>
-              </div>
+            <ReflexElement className="pane">
+              <NodeLibrary></NodeLibrary>
             </ReflexElement>
           </ReflexContainer>
         </ReflexElement>
@@ -80,12 +82,10 @@ class ReflexStorageDemo extends React.Component {
         <ReflexElement
           flex={this.layoutState.RightContainer}
           onResize={this.onResizePane}
-          className="right-pane"
+          className="pane"
           name="RightContainer"
         >
-          <div className="pane-content">
-            <label>属性面板</label>
-          </div>
+          <Inspector></Inspector>
         </ReflexElement>
       </ReflexContainer>
     );
