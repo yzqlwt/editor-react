@@ -4,7 +4,6 @@ import { Checkbox, Form, Tooltip, InputNumber } from 'antd';
 import Input from './input';
 import './index.global.css';
 
-
 class Properties extends React.Component {
   constructor(props) {
     super(props);
@@ -19,9 +18,6 @@ class Properties extends React.Component {
     return (
       <>
         <Form ref={this.formRef}>
-          <Form.Item name="name" rules={[{ required: true }]}>
-            <Input />
-          </Form.Item>
           <Form.Item name="visible">
             <div className="ins-bool">
               <div className="ins-prop">
@@ -37,17 +33,15 @@ class Properties extends React.Component {
             </div>
           </Form.Item>
           <Form.Item name="position">
-            <div className="ins-vec2">
-              <div className="ins-prop">
-                <div className="prop-name">
-                  <Tooltip title="Position">
-                    <span className="label">Position</span>
-                  </Tooltip>
-                </div>
-                <div className="prop-content">
-                  <Input width={100} label="X"> </Input>
-                  <Input width={100} label="Y"> </Input>
-                </div>
+            <div className="ins-prop">
+              <div className="prop-name">
+                <Tooltip title="Position">
+                  <span className="label">Position</span>
+                </Tooltip>
+              </div>
+              <div className="prop-content">
+                <Input label="X" />
+                <Input label="Y" />
               </div>
             </div>
           </Form.Item>

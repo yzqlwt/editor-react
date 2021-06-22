@@ -274,6 +274,10 @@ code {
     display: none;
 }
 
+.ant-form-item {
+  margin-bottom:0px;
+}
+
 .inner {
     display: inline-block;
     box-sizing: border-box;

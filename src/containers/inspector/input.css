@@ -1,0 +1,117 @@
+.ins_input {
+  --ctrl-btn-display: flex;
+  display: inline-flex;
+  position: relative;
+  border: none;
+  flex: auto;
+}
+
+.label {
+  padding: 0 5px;
+  font-size: 12px;
+  font-family: var(--font-editor);
+  color: #c3c3c3;
+  user-select: none;
+  flex: none;
+}
+
+.ins_content {
+  flex: auto;
+  overflow: hidden;
+  display: inline-flex;
+  position: relative;
+  background: var(--color-normal-fill-emphasis);
+  line-height: inherit;
+  border: calc(var(--size-normal-border) * 1px) solid var(--color-normal-border);
+  border-radius: calc(var(--size-normal-radius) * 1px);
+  height: 24px;
+}
+
+.box {
+  display: block;
+  color: var(--color-normal-contrast);
+  outline: none;
+  border: none;
+  background: none;
+  font-size: inherit;
+  line-height: inherit;
+  margin: calc(var(--size-normal-border) * -1px) 0;
+  width: 100%;
+  padding: 0 0 0 0.6em;
+  box-sizing: border-box;
+}
+
+.box::-webkit-inner-spin-button {
+  display: none;
+}
+
+.ins_input:hover .ins_content {
+  border-color: var(--color-hover-border);
+}
+
+.ins_input:hover .ins_content .box {
+  width: calc(100% - 10px);
+}
+
+.ins_input .ins_content:hover .control_btns {
+  right: 0;
+}
+
+.ins_input .control_btns {
+  position: absolute;
+  top: 0;
+  right: -9px;
+  height: 100%;
+  display: var(--ctrl-btn-display);
+  flex-direction: column;
+  width: 9px;
+  background: var(--color-active-fill);
+  line-height: 0;
+  transition: right 0.1s linear;
+}
+
+.control_btns > div {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  border-left: 1px solid var(--color-normal-border-weaker);
+}
+
+.control_btns svg {
+  width: 0.5em;
+  fill: var(--color-normal-contrast);
+  transition: all 0.2s;
+}
+
+.up {
+  user-select: none;
+}
+
+.up:hover svg {
+  fill: var(--color-hover-contrast);
+}
+
+.down {
+  user-select: none;
+}
+
+.down:hover svg {
+  fill: var(--color-active-contrast);
+}
+
+ .up[pressed] svg,
+ .down[pressed] svg {
+  fill: var(--color-focus-fill);
+}
+
+.ins_input:focus  {
+  /* border-color: var(--color-focus-border); */
+  /* border-color: #fff; */
+  background-color: #fff;
+}
+
+.ins_input[state='error-range'] > .ins_content {
+  border-color: var(--color-danger-fill);
+}

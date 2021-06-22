@@ -83,6 +83,7 @@ class ReflexStorageDemo extends React.Component {
           flex={this.layoutState.RightContainer}
           onResize={this.onResizePane}
           className="pane"
+          minSize={200}
           name="RightContainer"
         >
           <Inspector></Inspector>

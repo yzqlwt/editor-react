@@ -3,10 +3,11 @@
     display: inline-flex;
     position: relative;
     border: none;
+    flex: auto;
 }
 
 .ins-input>.ins-content {
-    flex: 1;
+    flex: auto;
     overflow: hidden;
     display: inline-flex;
     position: relative;
