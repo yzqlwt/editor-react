@@ -45,6 +45,18 @@ class Properties extends React.Component {
               </div>
             </div>
           </Form.Item>
+          <Form.Item name="anchor">
+            <div className="ins-prop">
+              <div className="prop-name">
+                <Tooltip title="Anchor">
+                  <span className="label">Anchor</span>
+                </Tooltip>
+              </div>
+              <div className="prop-content">
+                <Input />
+              </div>
+            </div>
+          </Form.Item>
         </Form>
       </>
     );
