@@ -64,6 +64,10 @@
   box-sizing: border-box;
 }
 
+.input, .input:focus {
+  color: #fd942b;
+}
+
 .up,
 .down {
   user-select: none;

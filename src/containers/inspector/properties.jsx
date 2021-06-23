@@ -1,7 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Checkbox, Form, Tooltip, InputNumber } from 'antd';
+import { Checkbox, Form, Tooltip } from 'antd';
 import Input from './input';
+import Vec2 from './vec2';
+import Vec1 from './vec1';
+import Size from './size';
 import './index.global.css';
 
 class Properties extends React.Component {
@@ -21,41 +24,30 @@ class Properties extends React.Component {
           <Form.Item name="visible">
             <div className="ins-bool">
               <div className="ins-prop">
-                <div className="prop-name">
-                  <Tooltip title="取消勾选后，对象不可见">
-                    <span className="label">Visible</span>
-                  </Tooltip>
-                </div>
                 <div className="prop-content">
                   <Checkbox />
+                  <Input value="background" type="string" />
                 </div>
               </div>
             </div>
           </Form.Item>
           <Form.Item name="position">
-            <div className="ins-prop">
-              <div className="prop-name">
-                <Tooltip title="Position">
-                  <span className="label">Position</span>
-                </Tooltip>
-              </div>
-              <div className="prop-content">
-                <Input label="X" />
-                <Input label="Y" />
-              </div>
-            </div>
+            <Vec2 label="Position" x={0} y={0} />
+          </Form.Item>
+          <Form.Item name="rotation">
+            <Vec1 label="Rotation" value={0} />
+          </Form.Item>
+          <Form.Item name="scale">
+            <Vec2 label="Scale" x={0} y={0} />
           </Form.Item>
           <Form.Item name="anchor">
-            <div className="ins-prop">
-              <div className="prop-name">
-                <Tooltip title="Anchor">
-                  <span className="label">Anchor</span>
-                </Tooltip>
-              </div>
-              <div className="prop-content">
-                <Input />
-              </div>
-            </div>
+            <Vec2 label="Anchor" x={0} y={0} />
+          </Form.Item>
+          <Form.Item name="size">
+            <Size label="Size" width={0} height={0} />
+          </Form.Item>
+          <Form.Item name="opacity">
+            <Vec1 label="Opacity" value={0} />
           </Form.Item>
         </Form>
       </>
