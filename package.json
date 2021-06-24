@@ -268,7 +268,8 @@
     "regenerator-runtime": "^0.13.5",
     "source-map-support": "^0.5.19",
     "sprite-react": "^0.2.1",
-    "spritejs": "^3.7.31"
+    "spritejs": "^3.7.31",
+    "three": "^0.129.0"
   },
   "devEngines": {
     "node": ">=10.x",

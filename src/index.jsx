@@ -2,7 +2,7 @@ import ReactDOM from 'react-dom';
 import React, { FC } from 'react';
 import { ReflexContainer, ReflexSplitter, ReflexElement } from 'react-reflex';
 import './index.global.css';
-import Editor from './containers/editor-spritejs/index';
+import Editor from './containers/editor-threejs/index';
 import Hierarchy from './containers/hierarchy/index';
 import Assets from './containers/assets/index';
 import Inspector from './containers/inspector/index';
@@ -69,7 +69,7 @@ class ReflexStorageDemo extends React.Component {
               onResize={this.onResizePane}
               name="EditorContainer"
               className="pane"
-              propagateDimensionsRate={2000}
+              propagateDimensionsRate={200}
               propagateDimensions={true}
             >
               <Editor></Editor>
