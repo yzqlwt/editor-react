@@ -22,7 +22,6 @@ class Input extends React.PureComponent {
       }
     } else if (type === 'float') {
       const result = !Number.isNaN(value);
-      console.log(result, value);
       if (result) {
         this.setState({ value: value });
       }
@@ -63,7 +62,7 @@ class Input extends React.PureComponent {
 }
 
 Input.propTypes = {
-  value: PropTypes.number.isRequired,
+  value: PropTypes.string.isRequired,
   type: PropTypes.string.isRequired,
 };
 

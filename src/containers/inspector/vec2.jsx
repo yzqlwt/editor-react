@@ -5,20 +5,20 @@ import Input from './input';
 
 class Index extends React.PureComponent {
   render() {
-    const { label, x, y } = this.props;
+    const { tip, label, x, y } = this.props;
     return (
       <>
         <div className="ins-prop">
           <div className="prop-name">
-            <Tooltip title={label}>
+            <Tooltip title={tip !== undefined ? tip : label}>
               <span className="label">{label}</span>
             </Tooltip>
           </div>
           <div className="prop-content">
             <span className="label">X</span>
-            <Input label="X" value={x} type="float" />
+            <Input value={x} type="float" />
             <span className="label">Y</span>
-            <Input label="Y" value={y} type="float" />
+            <Input value={y} type="float" />
           </div>
         </div>
       </>
@@ -29,11 +29,13 @@ class Index extends React.PureComponent {
 Index.defaultProps = {
   x: 0,
   y: 0,
+  tip: undefined,
 };
 
 Index.propTypes = {
   x: PropTypes.number,
   y: PropTypes.number,
+  tip: PropTypes.string,
   label: PropTypes.string.isRequired,
 };
 

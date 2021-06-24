@@ -16,9 +16,9 @@ class Index extends React.PureComponent {
           </div>
           <div className="prop-content">
             <span className="label">W</span>
-            <Input label="X" value={width} type="float" />
+            <Input value={width} type="float" />
             <span className="label">H</span>
-            <Input label="Y" value={height} type="float" />
+            <Input value={height} type="float" />
           </div>
         </div>
       </>
