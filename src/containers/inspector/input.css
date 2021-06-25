@@ -37,7 +37,6 @@
   right: -9px;
   height: 100%;
   display: flex;
-  justify-content: center;
   flex-direction: column;
   width: 9px;
   background: var(--color-active-fill);
@@ -45,6 +44,7 @@
 }
 
 .control svg {
+  margin-left: 1;
   width: 0.5em;
   fill: var(--color-normal-contrast);
   transition: all 0.2s;
