@@ -36,8 +36,6 @@ class Editor extends React.Component {
     });
   };
 
-
-
   render() {
     const { dimensions } = this.props;
     const { width, height } = dimensions;
@@ -62,7 +60,7 @@ class Editor extends React.Component {
             <Scene
               scale={scale}
               width={width - EditorMargin}
-              height={height - EditorMargin -25}
+              height={height - EditorMargin - 25}
             />
           </div>
         </div>
