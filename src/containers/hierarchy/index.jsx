@@ -1,29 +1,20 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Tree, Tabs, Divider } from 'antd';
-import NodeTrew from './treeview';
 import Icons from '@common/icons';
+import NodeTrew from './treeview';
 import Tab from '../common/tab';
-import Content from '../common/content';
-class Hierarchy extends React.Component {
+
+class Hierarchy extends React.PureComponent {
   render() {
     return (
-      <React.Fragment>
-        <Tab name="层级管理器" icon={Icons.hierarchy}></Tab>
-        <div className="content">
-          <NodeTrew></NodeTrew>
-        </div>
-      </React.Fragment>
+      <>
+        <Tab name="层级管理器" icon={Icons.hierarchy}>
+          <NodeTrew />
+        </Tab>
+      </>
     );
   }
 }
-
-Hierarchy.defaultProps = {
-  dimensions: {},
-};
-
-Hierarchy.propTypes = {
-  dimensions: PropTypes.objectOf(PropTypes.any),
-};
 
 export default Hierarchy;

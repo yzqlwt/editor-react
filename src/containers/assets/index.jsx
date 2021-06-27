@@ -7,11 +7,11 @@ import Content from '../common/content';
 class Assets extends React.Component {
   render() {
     return (
-      <React.Fragment>
-        <Tab name="资源管理器" icon={Icons.assets}></Tab>
-        <div className="content">
-        </div>
-      </React.Fragment>
+      <>
+        <Tab name="资源管理器" icon={Icons.assets}>
+          <div />
+        </Tab>
+      </>
     );
   }
 }

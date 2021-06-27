@@ -13,10 +13,9 @@ class Index extends React.Component {
   render() {
     return (
       <>
-        <Tab name="属性管理器" icon={Icons.inspector} />
-        <div className="content">
+        <Tab name="属性管理器" icon={Icons.inspector}>
           <Inspector />
-        </div>
+        </Tab>
       </>
     );
   }

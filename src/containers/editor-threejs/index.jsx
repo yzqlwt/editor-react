@@ -45,9 +45,8 @@ class Editor extends React.Component {
     const { scale } = this.state;
     const gap = calcMinMark(scale);
     return (
-      <React.Fragment>
-        <Tab name="场景编辑器" icon={Icons.scene} />
-        <div className="content">
+      <>
+        <Tab name="场景编辑器" icon={Icons.scene}>
           <div
             id="editor"
             style={{
@@ -63,8 +62,8 @@ class Editor extends React.Component {
               height={height - EditorMargin - 25}
             />
           </div>
-        </div>
-      </React.Fragment>
+        </Tab>
+      </>
     );
   }
 }
