@@ -27,7 +27,7 @@ class PropComponent extends React.Component {
             </div>
             <span className="name">Node</span>
           </div>
-          <div className={styles.line}></div>
+          <div className={styles.line} />
           {expand && <div className={styles.content}>{children}</div>}
         </div>
       </>
@@ -36,8 +36,7 @@ class PropComponent extends React.Component {
 }
 
 PropComponent.propTypes = {
-  // value: PropTypes.string.isRequired,
-  // type: PropTypes.string.isRequired,
+  children: PropTypes.element.isRequired,
 };
 
 export default PropComponent;

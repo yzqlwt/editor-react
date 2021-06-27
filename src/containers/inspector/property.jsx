@@ -10,7 +10,7 @@ class Property extends React.PureComponent {
       <>
         <div className={styles.wrapper}>
           <div className={styles.prop_name}>
-            <Tooltip title={tooltip ? tooltip : label}>
+            <Tooltip title={tooltip}>
               <span className={styles.label}>{label}</span>
             </Tooltip>
           </div>
@@ -27,8 +27,9 @@ Property.defaultProps = {
 
 Property.propTypes = {
   value: PropTypes.number,
-  tooltip: PropTypes.string,
+  tooltip: PropTypes.string.isRequired,
   label: PropTypes.string.isRequired,
+  children: PropTypes.node.isRequired,
 };
 
 export default Property;

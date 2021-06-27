@@ -16,7 +16,7 @@ class Inspactor extends React.Component {
     return (
       <div className={InspectorStyles.inspector}>
         <div className={InspectorStyles.header}>
-          <Checkbox></Checkbox>
+          <Checkbox />
           <div className={InputStyles.wrapper}>
             <input className={InputStyles.input} />
           </div>

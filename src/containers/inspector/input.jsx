@@ -25,7 +25,6 @@ class Input extends React.Component {
     this.inputRef.current.addEventListener('input', (event) => {
       event.preventDefault();
       event.stopImmediatePropagation();
-      console.log(event.target.value, this.parseInput(event.target.value));
     });
     this.downRef.current.addEventListener('mousedown', (event) => {
       event.preventDefault();
@@ -101,8 +100,8 @@ class Input extends React.Component {
   };
 
   startHolding = (type) => {
-    this._holdingID = setTimeout(() => {
-      this._stepingID = setInterval(() => {
+    this.holdingID = setTimeout(() => {
+      this.stepingID = setInterval(() => {
         if (type === 'increase') {
           this.stepUp();
         } else if (type === 'decrease') {
@@ -113,10 +112,10 @@ class Input extends React.Component {
   };
 
   stopHolding() {
-    clearInterval(this._holdingID);
-    this._holdingID = null;
-    clearTimeout(this._stepingID);
-    this._stepingID = null;
+    clearInterval(this.holdingID);
+    this.holdingID = null;
+    clearTimeout(this.stepingID);
+    this.stepingID = null;
   }
 
   render() {
@@ -151,7 +150,7 @@ class Input extends React.Component {
 }
 
 Input.propTypes = {
-  value: PropTypes.string.isRequired,
+  value: PropTypes.number.isRequired,
   type: PropTypes.string.isRequired,
 };
 
