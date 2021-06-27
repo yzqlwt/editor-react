@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './input.css';
-import console from 'console';
 
 class Input extends React.Component {
   constructor(props) {
@@ -33,35 +32,32 @@ class Input extends React.Component {
       event.stopImmediatePropagation();
       this.downRef.current.setAttribute('pressed', '');
       this.stepDown();
+      this.startHolding('decrease');
     });
     this.downRef.current.addEventListener('mouseup', (event) => {
       event.preventDefault();
       event.stopImmediatePropagation();
       this.downRef.current.removeAttribute('pressed', '');
+      this.stopHolding();
     });
     this.upRef.current.addEventListener('mousedown', (event) => {
       event.preventDefault();
       event.stopImmediatePropagation();
       this.upRef.current.setAttribute('pressed', '');
       this.stepUp();
-      this.startHolding(this.stepUp);
+      this.startHolding('increase');
     });
     this.upRef.current.addEventListener('mouseup', (event) => {
       event.preventDefault();
       event.stopImmediatePropagation();
       this.upRef.current.removeAttribute('pressed', '');
+      this.stopHolding();
     });
   }
 
-  toFixed = (e, t, r) => {
-    let l = Math.pow(10, t),
-      o = (Math.round(e * l) / l).toFixed(t);
-    if (r) {
-      let e = new RegExp('0{1,' + r + '}$');
-      (o = o.replace(e, '')),
-        r >= t && '.' === o[o.length - 1] && (o = o.slice(0, -1));
-    }
-    return o;
+  toFixed = (value, count) => {
+    const tmp = 10 ** count;
+    return (Math.round(value * tmp) / tmp).toFixed(count);
   };
 
   parseFn = (value) => {
@@ -104,28 +100,27 @@ class Input extends React.Component {
     this.setState({ value: this.formatValue(i) });
   };
 
-  startHolding(target, func) {
-    (this._curSpin = target),
-      (this._holdingID = setTimeout(() => {
-        this._stepingID = setInterval(() => {
-          func.apply(this);
-        }, 50);
-      }, 500));
-  }
+  startHolding = (type) => {
+    this._holdingID = setTimeout(() => {
+      this._stepingID = setInterval(() => {
+        if (type === 'increase') {
+          this.stepUp();
+        } else if (type === 'decrease') {
+          this.stepDown();
+        }
+      }, 50);
+    }, 500);
+  };
 
   stopHolding() {
-    clearInterval(this._holdingID),
-      (this._holdingID = null),
-      clearTimeout(this._stepingID),
-      (this._stepingID = null),
-      (this._curSpin = null);
+    clearInterval(this._holdingID);
+    this._holdingID = null;
+    clearTimeout(this._stepingID);
+    this._stepingID = null;
   }
 
   render() {
     const { value } = this.state;
-    console.log('render', value);
-    const { type } = this.props;
-    const isShowControl = type !== 'string';
     return (
       <>
         <div className={styles.wrapper} ref={this.divRef}>
@@ -135,6 +130,7 @@ class Input extends React.Component {
             className={styles.input}
             placeholder="-"
             ref={this.inputRef}
+            onChange={() => {}}
           />
           <div className={styles.control}>
             <div className={styles.up} ref={this.upRef}>

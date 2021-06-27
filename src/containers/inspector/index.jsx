@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 import { Tree, Tabs, Divider } from 'antd';
 import Icons from '@common/icons';
 import Tab from '../common/tab';
-import Properties from './properties';
+import Inspector from './inspector';
 
-class Inspector extends React.Component {
+class Index extends React.Component {
   constructor(props) {
     super(props);
   }
@@ -15,19 +15,19 @@ class Inspector extends React.Component {
       <>
         <Tab name="属性管理器" icon={Icons.inspector} />
         <div className="content">
-          <Properties />
+          <Inspector />
         </div>
       </>
     );
   }
 }
 
-Inspector.defaultProps = {
+Index.defaultProps = {
   dimensions: {},
 };
 
-Inspector.propTypes = {
+Index.propTypes = {
   dimensions: PropTypes.objectOf(PropTypes.any),
 };
 
-export default Inspector;
+export default Index;

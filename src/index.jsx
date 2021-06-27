@@ -28,8 +28,6 @@ class ReflexStorageDemo extends React.Component {
     };
   };
 
-
-
   onResizePane = (event) => {
     const { name, flex } = event.component.props;
     this.layoutState[name] = flex;
@@ -42,7 +40,7 @@ class ReflexStorageDemo extends React.Component {
   render() {
     return (
       <ReflexContainer orientation="vertical">
-        <ReflexElement flex={this.layoutState.LeftContainer}>
+        <ReflexElement flex={this.layoutState.LeftContainer} minSize={300}>
           <ReflexContainer orientation="horizontal">
             <ReflexElement
               flex={this.layoutState.HierarchyContainer}
@@ -85,7 +83,7 @@ class ReflexStorageDemo extends React.Component {
           flex={this.layoutState.RightContainer}
           onResize={this.onResizePane}
           className="pane"
-          minSize={200}
+          minSize={300}
           name="RightContainer"
         >
           <Inspector></Inspector>

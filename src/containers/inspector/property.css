@@ -1,0 +1,38 @@
+.wrapper {
+  margin: 0px 5px;
+  display: flex;
+  align-items: center;
+}
+
+.prop_name {
+  display: inline-flex;
+  width: 85.5px;
+  overflow: hidden;
+  padding-right: 4px;
+  box-sizing: border-box;
+  text-overflow: ellipsis;
+  flex: none;
+}
+
+.label {
+  padding: 0 5px;
+  font-size: 12px;
+  font-family: var(--font-normal);
+  color: #c3c3c3;
+  user-select: none;
+  flex: none;
+}
+
+.prop_content {
+  flex: auto;
+  display: flex;
+  align-items: center;
+}
+.prop_content span {
+  padding: 0 5px;
+  font-size: 12px;
+  font-family: var(--font-normal);
+  color: #c3c3c3;
+  user-select: none;
+  flex: none;
+}
