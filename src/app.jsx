@@ -39,6 +39,7 @@ class ReflexStorageDemo extends React.Component {
   };
 
   render() {
+    console.log(this.props);
     return (
       <ReflexContainer orientation="vertical">
         <ReflexElement flex={this.layoutState.LeftContainer} minSize={300}>
@@ -94,8 +95,9 @@ class ReflexStorageDemo extends React.Component {
   }
 }
 
-function stateToProps() {
-  return {};
+function stateToProps(state) {
+  const { dataWorkSpace } = state;
+  return { dataWorkSpace };
 }
 
 export default withRouter(connect(stateToProps)(ReflexStorageDemo));

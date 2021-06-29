@@ -1,8 +1,10 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { Form, Input, Button, Alert } from 'antd';
 import { UserOutlined, LockOutlined, CodepenOutlined } from '@ant-design/icons';
+import * as fse from 'fs-extra';
 import auth from '../../common/auth';
 
 class Index extends React.Component {
@@ -29,7 +31,17 @@ class Index extends React.Component {
   };
 
   redirectToIndex = () => {
-    this.props.history.push('/app');
+    const { dispatch } = this.props;
+    const item = window.localStorage.getItem('workspace');
+    if (fse.pathExistsSync(item)) {
+      this.props.history.push('/app');
+      dispatch({
+        type: 'workspace',
+        path: item,
+      });
+    } else {
+      this.props.history.push('/skin');
+    }
     console.log('跳转');
   };
 
@@ -137,6 +149,10 @@ class Index extends React.Component {
     );
   }
 }
+
+Index.propTypes = {
+  dispatch: PropTypes.func.isRequired,
+};
 
 function stateToProps() {
   return {};

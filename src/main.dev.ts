@@ -74,6 +74,9 @@ const createWindow = async () => {
     icon: getAssetPath('icon.png'),
     webPreferences: {
       nodeIntegration: true,
+      nodeIntegrationInWorker: true,
+      webSecurity: false,
+      enableRemoteModule: true, // 这里是关键设置
     },
   });
 
