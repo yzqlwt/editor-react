@@ -6,9 +6,6 @@
   width: 100%;
   color: #ccc;
   border-bottom: 1px solid #474747;
-  display: list-item;
-  text-align: -webkit-match-parent;
-  white-space: nowrap;
+  display: flex;
   box-sizing: border-box;
-  list-style: none;
 }

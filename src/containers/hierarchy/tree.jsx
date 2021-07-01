@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { v4 as uuidv4 } from 'uuid';
 import * as fse from 'fs-extra';
 import styles from './tree.css';
+import Icon from '../ui-kit/ui-icon';
 
 class Tree extends React.PureComponent {
   constructor(props) {
@@ -23,6 +24,8 @@ class Tree extends React.PureComponent {
         <li className={styles.item} style={style}>
           {/* <i className="fa fa-unlock" title="解锁 / 锁定节点"></i>
           <i className="icon-play"></i> */}
+          <Icon value='lock'></Icon>
+          <Icon value='play'></Icon>
           <span>{node._name}</span>
         </li>
       );
