@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { Modal } from 'antd';
@@ -7,7 +8,6 @@ const { app, dialog } = window.require('electron').remote;
 
 class Index extends React.Component {
   componentDidMount() {
-    const { dispatch } = this.props;
     Modal.destroyAll();
     Modal.info({
       title: '创建Skin',
@@ -29,19 +29,28 @@ class Index extends React.Component {
     if (canceled) {
       this.openDialog();
     } else {
-      window.localStorage.setItem('workspace', filePaths[0]);
+      // window.localStorage.setItem('workspace', filePaths[0]);
       dispatch({
         type: 'workspace',
-        path: filePaths[0],
+        workspace: filePaths[0],
+      });
+      dispatch({
+        type: 'topic',
+        topic: null,
       });
       history.push('/app');
     }
   }
 
   render() {
-    return <div></div>;
+    return <div />;
   }
 }
+
+Index.propTypes = {
+  dispatch: PropTypes.func.isRequired,
+  history: PropTypes.objectOf(PropTypes.object).isRequired,
+};
 
 function stateToProps() {
   return {};

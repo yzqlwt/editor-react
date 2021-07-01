@@ -1,10 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './prop-component.css';
+import Icon from '../ui-kit/ui-icon';
 
 class PropComponent extends React.Component {
   constructor(props) {
     super(props);
+    this.iconRef = React.createRef();
     this.state = {
       expand: true,
     };
@@ -13,6 +15,12 @@ class PropComponent extends React.Component {
   handleExpand = (event) => {
     const { expand } = this.state;
     this.setState({ expand: !expand });
+    console.log(this.iconRef.current)
+    if (expand) {
+      this.iconRef.current.removeAttribute('expand');
+    } else {
+      this.iconRef.current.addAttribute('expand');
+    }
   };
 
   render() {
@@ -22,9 +30,7 @@ class PropComponent extends React.Component {
       <>
         <div className={styles.component}>
           <div className={styles.header} onClick={this.handleExpand}>
-            <div className={styles.icon} data-expand={expand}>
-              <span className="icon-play" />
-            </div>
+            <Icon value="play" ref={this.iconRef} />
             <span className="name">Node</span>
           </div>
           <div className={styles.line} />

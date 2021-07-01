@@ -1,0 +1,10 @@
+.fold {
+  font-size: 8px;
+  width: 12px;
+  height: 24px;
+  text-align: center;
+}
+
+.fold[expand] {
+  transform: rotate(90deg);
+}

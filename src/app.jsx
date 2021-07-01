@@ -15,6 +15,10 @@ class ReflexStorageDemo extends React.Component {
     this.layoutState = this.getLayoutState();
   }
 
+  componentWillUnmount(){
+
+  }
+
   getLayoutState = () => {
     const item = window.localStorage.getItem('layout-flex');
     if (item) {

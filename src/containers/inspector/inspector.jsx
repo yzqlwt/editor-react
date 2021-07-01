@@ -5,6 +5,7 @@ import PropComponent from './prop-component';
 import { Position, Rotation, Scale, Anchor, Size, Opacity } from './props';
 import InspectorStyles from './inspector.css';
 import InputStyles from './input.css';
+import Icon from '../ui-kit/ui-icon';
 
 class Inspactor extends React.Component {
   constructor(props) {

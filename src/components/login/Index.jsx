@@ -37,7 +37,7 @@ class Index extends React.Component {
       this.props.history.push('/app');
       dispatch({
         type: 'workspace',
-        path: item,
+        workspace: item,
       });
     } else {
       this.props.history.push('/skin');
