@@ -15,13 +15,13 @@ class PropComponent extends React.Component {
   handleExpand = (event) => {
     const { expand } = this.state;
     this.setState({ expand: !expand });
-    console.log(this.iconRef.current)
-    if (expand) {
-      this.iconRef.current.removeAttribute('expand');
-    } else {
-      this.iconRef.current.addAttribute('expand');
-    }
+    this.iconRef.current.setAttribute('expand', !expand);
   };
+
+  componentDidMount() {
+    const { expand } = this.state;
+    this.iconRef.current.setAttribute('expand', expand);
+  }
 
   render() {
     const { expand } = this.state;

@@ -5,6 +5,6 @@
   text-align: center;
 }
 
-.fold[expand] {
+.fold[expand='true'] {
   transform: rotate(90deg);
 }

@@ -8,8 +8,8 @@ class Icon extends React.PureComponent {
     this.rootRef = React.createRef();
   }
 
-  addAttribute = (attr) => {
-    this.rootRef.current.setAttribute(attr, '');
+  setAttribute = (attr, value) => {
+    this.rootRef.current.setAttribute(attr, value);
   };
 
   removeAttribute = (attr) => {
