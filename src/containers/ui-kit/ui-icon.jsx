@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { each } from 'loadsh';
 import styles from './ui-icon.css';
 
 class Icon extends React.Component {
@@ -8,24 +9,31 @@ class Icon extends React.Component {
     this.rootRef = React.createRef();
   }
 
-  setAttribute = (attr, value) => {
-    this.rootRef.current.setAttribute(attr, value);
-  };
-
-  removeAttribute = (attr) => {
-    this.rootRef.current.removeAttribute(attr);
-  };
+  componentDidMount() {
+    const { attr } = this.props;
+    each(attr || {}, (value, key) => {
+      this.rootRef.current.setAttribute(key, value);
+    });
+  }
 
   componentDidUpdate() {
-    console.log('componentDidUpdate', this.props);
-    const { attr, attrValue } = this.props;
-    this.rootRef.current.setAttribute(attr, attrValue);
+    const { attr } = this.props;
+    each(attr || {}, (value, key) => {
+      this.rootRef.current.setAttribute(key, value);
+    });
   }
 
   render() {
-    const { value } = this.props;
+    const { value, type, callback, attr } = this.props;
     return (
-      <div className={styles.fold} ref={this.rootRef}>
+      <div
+        className={styles[type]}
+        ref={this.rootRef}
+        onClick={(event) => {
+          event.stopPropagation();
+          callback(attr);
+        }}
+      >
         <div className="icon">
           <span className={`icon-${value}`} />
         </div>
@@ -37,7 +45,14 @@ class Icon extends React.Component {
 Icon.propTypes = {
   value: PropTypes.string.isRequired,
   attr: PropTypes.string.isRequired,
-  attrValue: PropTypes.string.isRequired,
+  type: PropTypes.string.isRequired,
+  callback: PropTypes.func,
+};
+
+Icon.defaultProps = {
+  callback: () => {
+    console.log('callback');
+  },
 };
 
 export default Icon;

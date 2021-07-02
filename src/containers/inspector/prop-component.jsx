@@ -33,8 +33,10 @@ class PropComponent extends React.Component {
             <Icon
               value="play"
               ref={this.iconRef}
-              attr="expand"
-              attrValue={expand ? 'true' : 'false'}
+              type="fold"
+              attr={{
+                isExpand: expand,
+              }}
             />
             <span className="name">Node</span>
           </div>

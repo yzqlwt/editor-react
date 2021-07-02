@@ -1,3 +1,4 @@
 import path from './path';
+import tree from './tree';
 
-export default { path };
+export default { path, tree };

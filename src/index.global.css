@@ -123,7 +123,7 @@ code {
 
 .content {
   height: calc(100% - 22px);
-  background-color: #454545;
+  background-color: var(--color-normal-fill-emphasis);
   border: 1px solid #606060;
 }
 

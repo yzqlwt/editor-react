@@ -256,6 +256,7 @@
     "electron-updater": "^4.3.4",
     "fs-extra": "^10.0.0",
     "history": "^5.0.0",
+    "loadsh": "^0.0.4",
     "prop-types": "^15.7.2",
     "react": "^17.0.1",
     "react-contextmenu": "^2.14.0",

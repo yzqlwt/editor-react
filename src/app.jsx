@@ -1,6 +1,7 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
+import * as fse from 'fs-extra';
 import { ReflexContainer, ReflexSplitter, ReflexElement } from 'react-reflex';
 import './index.global.css';
 import Editor from './containers/editor-threejs/index';
@@ -15,8 +16,14 @@ class ReflexStorageDemo extends React.Component {
     this.layoutState = this.getLayoutState();
   }
 
-  componentWillUnmount(){
-
+  componentDidMount() {
+    const { dispatch } = this.props;
+    const topicPath = 'C:/Users/yzqlwt/Documents/skin01/topic1.json';
+    const topic = fse.readJSONSync(topicPath);
+    dispatch({
+      type: 'tree',
+      data: topic,
+    });
   }
 
   getLayoutState = () => {

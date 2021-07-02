@@ -4,8 +4,33 @@
   top: 0;
   left: 0;
   width: 100%;
-  color: #ccc;
-  border-bottom: 1px solid #474747;
+  color: var(--color-normal-contrast);
   display: flex;
+  text-align: center;
   box-sizing: border-box;
+}
+
+.item:hover {
+  background-color: var(--color-hover-fill-emphasis);
+}
+
+.item:hover :global(.icon-lock) {
+  visibility: visible;
+}
+
+.item[data-selected='true'] {
+  background-color: var(--color-focus-fill);
+  color: var(--color-focus-contrast);
+}
+
+.name {
+  display: inline-block;
+  line-height: 100%;
+  cursor: default;
+  margin-left: 0;
+  vertical-align: middle;
+  white-space: nowrap;
+  padding-right: 6px;
+  -webkit-user-drag: element;
+  user-select: none;
 }
