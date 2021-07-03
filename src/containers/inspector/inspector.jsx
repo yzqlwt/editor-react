@@ -1,7 +1,10 @@
-import React from 'react';
+import React, { createContext } from 'react';
 import { Form } from 'antd';
+import { find } from 'loadsh';
+import { connect } from 'react-redux';
 import Checkbox from './checkbox';
 import PropComponent from './prop-component';
+import Property from './property';
 import { Position, Rotation, Scale, Anchor, Size, Opacity } from './props';
 import InspectorStyles from './inspector.css';
 import InputStyles from './input.css';
@@ -13,40 +16,46 @@ class Inspactor extends React.Component {
     this.formRef = React.createRef();
   }
 
+  componentDidMount() {
+    // this.formRef.current.setFieldsValue({
+    //   position: [1, 1],
+    // });
+  }
+
   render() {
+    const { tree, dispatch } = this.props;
+    const { selected, data } = tree;
+    if (selected.length !== 1) {
+      return null;
+    }
+    let node = find(data, { id: selected[0] });
+    console.log(node);
     return (
       <div className={InspectorStyles.inspector}>
         <div className={InspectorStyles.header}>
           <Checkbox />
           <div className={InputStyles.wrapper}>
-            <input className={InputStyles.input} />
+            <input className={InputStyles.input} value={node.name} />
           </div>
         </div>
         <PropComponent>
-          <Form ref={this.formRef}>
-            <Form.Item name="position">
-              <Position />
-            </Form.Item>
-            <Form.Item name="rotation">
-              <Rotation />
-            </Form.Item>
-            <Form.Item name="scale">
-              <Scale />
-            </Form.Item>
-            <Form.Item name="anchor">
-              <Anchor />
-            </Form.Item>
-            <Form.Item name="size">
-              <Size />
-            </Form.Item>
-            <Form.Item name="opacity">
-              <Opacity />
-            </Form.Item>
-          </Form>
+          <Property
+            prop="position"
+            tooltip="相对父节点的位置坐标，以像素为单位"
+          />
+          <Property
+            prop="rotation"
+            tooltip="相对父节点的旋转，以度为单位，输入正值时逆时针旋转"
+          />
         </PropComponent>
       </div>
     );
   }
 }
 
-export default Inspactor;
+function stateToProps(state) {
+  const { path, tree } = state;
+  return { path, tree };
+}
+
+export default connect(stateToProps)(Inspactor);

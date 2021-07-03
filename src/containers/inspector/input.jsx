@@ -122,9 +122,8 @@ class Input extends React.Component {
     const { value } = this.state;
     return (
       <>
-        <div className={styles.wrapper} ref={this.divRef}>
+        <div className={styles.wrapper}>
           <input
-            defaultValue={value}
             value={value}
             className={styles.input}
             placeholder="-"

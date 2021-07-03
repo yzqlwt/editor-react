@@ -77,7 +77,6 @@ class Tree extends React.Component {
   };
 
   handleClickItem = (event, id) => {
-    console.log(event);
     const { tree, dispatch } = this.props;
     const { selected, data } = tree;
     let newSelected = [id];

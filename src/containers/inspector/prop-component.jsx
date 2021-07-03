@@ -38,7 +38,7 @@ class PropComponent extends React.Component {
                 isExpand: expand,
               }}
             />
-            <span className="name">Node</span>
+            <span className={styles.name}>Node</span>
           </div>
           <div className={styles.line} />
           {expand && <div className={styles.content}>{children}</div>}

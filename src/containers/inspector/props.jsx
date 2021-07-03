@@ -1,20 +1,22 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Form, Tooltip } from 'antd';
+import { map } from 'loadsh';
 import Input from './input';
-import Checkbox from './checkbox';
-import PropComponent from './prop-component';
 import Property from './property';
-import InspectorStyles from './inspector.css';
-import InputStyles from './input.css';
+
 
 function Position(props) {
+  const { position } = props;
   return (
     <Property label="Position" tooltip="相对父节点的位置坐标，以像素为单位">
-      <span>X</span>
-      <Input value={0} type="float" />
-      <span>Y</span>
-      <Input value={0} type="float" />
+      {map(position, (value, key) => {
+        return (
+          <>
+            <span>{key.toUpperCase()}</span>
+            <Input value={value || 0} type="float" />
+          </>
+        );
+      })}
     </Property>
   );
 }
@@ -25,9 +27,6 @@ function Rotation(props) {
       label="Rotation"
       tooltip="相对父节点的旋转，以度为单位，输入正值时逆时针旋转"
     >
-      <span>X</span>
-      <Input value={0} type="float" />
-      <span>Y</span>
       <Input value={0} type="float" />
     </Property>
   );
