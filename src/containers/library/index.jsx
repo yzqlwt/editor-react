@@ -7,11 +7,11 @@ import Content from '../common/content';
 class NodeLibrary extends React.Component {
   render() {
     return (
-      <React.Fragment>
-        <Tab name="ui库" icon={Icons.library}></Tab>
-        <div className="content">
-        </div>
-      </React.Fragment>
+      <>
+        <Tab name="ui库" icon={Icons.library}>
+          <div />
+        </Tab>
+      </>
     );
   }
 }

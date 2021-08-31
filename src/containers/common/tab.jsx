@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 
 class Tab extends React.PureComponent {
   render() {
-    // console.error(this.props);
     const { children, icon, name } = this.props;
     return (
       <>

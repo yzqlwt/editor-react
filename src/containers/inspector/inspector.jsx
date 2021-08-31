@@ -29,7 +29,6 @@ class Inspactor extends React.Component {
       return null;
     }
     let node = find(data, { id: selected[0] });
-    console.log(node);
     return (
       <div className={InspectorStyles.inspector}>
         <div className={InspectorStyles.header}>
@@ -40,10 +39,12 @@ class Inspactor extends React.Component {
         </div>
         <PropComponent>
           <Property
+            key="position"
             prop="position"
             tooltip="相对父节点的位置坐标，以像素为单位"
           />
           <Property
+            key="rotation"
             prop="rotation"
             tooltip="相对父节点的旋转，以度为单位，输入正值时逆时针旋转"
           />

@@ -9,6 +9,9 @@
   transform: rotate(90deg);
 }
 
+.fold:focus{
+  outline: 0;
+}
 
 .arrow {
   visibility: hidden;
@@ -29,6 +32,9 @@
   transform: rotate(90deg);
 }
 
+.arrow:focus{
+  outline: 0;
+}
 
 .lock {
   position: absolute;

@@ -27,11 +27,16 @@ class Icon extends React.Component {
     const { value, type, callback, attr } = this.props;
     return (
       <div
+        tabIndex="0"
         className={styles[type]}
         ref={this.rootRef}
+        role="button"
+        onKeyDown={() => {}}
         onClick={(event) => {
-          event.stopPropagation();
-          callback(attr);
+          if (callback) {
+            event.stopPropagation();
+            callback(attr);
+          }
         }}
       >
         <div className="icon">
@@ -44,15 +49,13 @@ class Icon extends React.Component {
 
 Icon.propTypes = {
   value: PropTypes.string.isRequired,
-  attr: PropTypes.string.isRequired,
+  attr: PropTypes.objectOf(PropTypes.any).isRequired,
   type: PropTypes.string.isRequired,
   callback: PropTypes.func,
 };
 
 Icon.defaultProps = {
-  callback: () => {
-    console.log('callback');
-  },
+  callback: null,
 };
 
 export default Icon;

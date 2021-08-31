@@ -15,13 +15,7 @@ class PropComponent extends React.Component {
   handleExpand = (event) => {
     const { expand } = this.state;
     this.setState({ expand: !expand });
-    // this.iconRef.current.setAttribute('expand', !expand);
   };
-
-  componentDidMount() {
-    const { expand } = this.state;
-    // this.iconRef.current.setAttribute('expand', expand);
-  }
 
   render() {
     const { expand } = this.state;
@@ -29,7 +23,13 @@ class PropComponent extends React.Component {
     return (
       <>
         <div className={styles.component}>
-          <div className={styles.header} onClick={this.handleExpand}>
+          <div
+            tabIndex="0"
+            role="button"
+            className={styles.header}
+            onClick={this.handleExpand}
+            onKeyDown={() => {}}
+          >
             <Icon
               value="play"
               ref={this.iconRef}
